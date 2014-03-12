@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.zit.waeims.vo">
+<class name="UserVO" table="sys_user">
+	<id name="id">
+		<generator class="uuid"></generator>
+	</id>
+	<property name="account" not-null="true" unique="true" length="32"></property>
+	<property name="name" not-null="true"  length="64"></property>
+	<property name="password" not-null="true"  length="20"></property>
+	<property name="createTime" not-null="true" type="timestamp"></property>
+	<property name="lastModTime" not-null="true" type="timestamp"></property>
+	<property name="lastModPassTime" not-null="true" type="timestamp"></property>
+	<property name="readOnly" not-null="true" type="boolean" ></property>
+	<property name="state" not-null="true" type="integer" length="1"></property>
+	<property name="remark"   length="256"></property>
+</class>
+</hibernate-mapping>

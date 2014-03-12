@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+  <form-beans />
+  <global-exceptions />
+  <global-forwards />
+  <action-mappings>
+  	<action path="/user/*" type="com.zit.waeims.presentation.struts1.action.UserAction" parameter="{1}">
+  		<forward name="loginSuccess" path="/index.jsp" redirect="true"></forward>
+  		<forward name="modPasswordSuccess" path="/login.jsp"></forward>
+  		<forward name="logout" path="/login.jsp" redirect="true"></forward>
+  		<forward name="loginFailed" path="/login.jsp" redirect="true"></forward>
+  		<forward name="querySuccess" path="/jsp/user/list.jsp"></forward>
+  		<forward name="show" path="/jsp/user/showOrMod.jsp"></forward>
+  	</action>
+  	
+  		<action path="/role/*" type="com.zit.waeims.presentation.struts1.action.RoleAction" parameter="{1}">
+			<forward name="querySuccess" path="/jsp/role/list.jsp"></forward>
+			<forward name="show" path="/jsp/role/showOrMod.jsp"></forward>
+	  	</action>
+	  	
+	  	<action path="/systemModule/*" type="com.zit.waeims.presentation.struts1.action.SystemModuleAction" parameter="{1}">
+			<forward name="querySuccess" path="/jsp/systemModule/list.jsp"></forward>
+			<forward name="show" path="/jsp/systemModule/showOrMod.jsp"></forward>
+	  	</action>
+  </action-mappings>
+</struts-config>
+

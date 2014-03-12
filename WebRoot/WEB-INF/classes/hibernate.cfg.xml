@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+<!-- 一个session-factory节点对应一个数据库 -->
+<session-factory>
+	<!--数据库方言 使hibernate可以针对特定的数据库生成不同的SQL语句，可以省略，但最好写上-->
+	<property name="dialect">org.hibernate.dialect.DerbyDialect</property>
+	<!-- 数据库连接字符串 -->
+	<property name="connection.url">jdbc:derby://localhost:1527/myeclipse</property>
+	<!-- 数据库用户名 -->
+	<property name="connection.username">classiccars</property>
+	<!-- 数据库密码 -->
+	<property name="connection.password">myeclipse</property>
+	<!-- 数据库驱动类 -->
+	<property name="connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+	<!-- 用于myeclipse，指定使用那个名称的数据库配置信息，不是必须 -->
+	<property name="myeclipse.connection.profile">MyEclipse Derby</property>
+	<!-- 是否自动建表，值可以为：
+		validate         加载hibernate时，验证创建数据库表结构
+		create           每次加载hibernate，重新创建数据库表结构。
+		create-drop      加载hibernate时创建表，退出时删除表结构
+		update           加载hibernate自动更新数据库，表存在，则更新，不存在，则新建
+	-->
+	<property name="hbm2ddl.auto">update</property>
+	<!-- 是否在后台打印执行的sql语句 -->
+	<property name="show_sql">true</property>
+	<!-- 是否格式化后台打印的sql语句，方便阅读 -->
+	<property name="format_sql">true</property>
+	<!-- 加载对应vo的映射文件 -->
+	<mapping
+		resource="com/zit/waeims/dao/hibernate/mapping/role.hbm.xml" />
+	<mapping
+		resource="com/zit/waeims/dao/hibernate/mapping/systemModule.hbm.xml" />
+	<mapping
+		resource="com/zit/waeims/dao/hibernate/mapping/user.hbm.xml" />
+	<mapping
+		resource="com/zit/waeims/dao/hibernate/mapping/systemParameter.hbm.xml" />
+
+
+
+
+</session-factory>
+
+</hibernate-configuration>

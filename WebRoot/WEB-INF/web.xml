@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee   http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <servlet>
+    <servlet-name>action</servlet-name>
+    <!--
+       <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
+    -->
+    <!-- 使用自定义的actionServlet，统一字符编码 -->
+    <servlet-class>com.zit.waeims.presentation.struts1.MyActionServlet</servlet-class>
+    <init-param>
+    	<!-- struts参数 -->
+      <description>这个参数指定struts配置文件的地址，/表示从src目录开始</description>
+      <param-name>config</param-name>
+      <param-value>/struts-config.xml</param-value>
+    </init-param>
+      <init-param>
+      <!-- 自定义参数 -->
+      <description>指定统一的字符编码，包括前台提交参数的编码和后台返回前台数据的字符编码</description>
+      <param-name>characterEncoding</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+    <init-param>
+    	<!-- struts参数 -->
+      <description>设置Servlet的debug级别,控制日志记录的详细程度。默认为0，记录相对最少的日志信息</description>
+      <param-name>debug</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <init-param>
+      <description>设置struts日志级别。通过此设置，可以查看不同详细等级的解析日志。默认为0，记录相对最少的日志信息。</description>
+      <param-name>detail</param-name>
+      <param-value>3</param-value>
+    </init-param>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+  
+  <servlet-mapping>
+    <!-- 指定struts的actionServlet处理那些请求，即那些请求转发到struts -->
+    <servlet-name>action</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  <!-- httpsession控制 ，10分钟后失效-->
+  <session-config>
+  	<session-timeout>10</session-timeout>
+  </session-config>
+  <listener>
+  	<description>web服务器启动监听</description>
+  	<listener-class>com.zit.waeims.presentation.listener.MyServletContextListener</listener-class>
+  </listener>
+  <!--欢迎文件列表
+  当用户访问Web应用时，如果仅仅给出Web应用的Root URL,没有指定具体的文件名。Web容器会自动调用Web应用的欢迎文件
+    -->
+  <welcome-file-list>
+     <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
+
